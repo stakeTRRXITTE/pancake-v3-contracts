@@ -33,6 +33,7 @@ const eth: NetworkUserConfig = {
 const config: HardhatUserConfig = {
   solidity: {
     version: '0.7.6',
+    runs: 1,
   },
   networks: {
     hardhat: {},
