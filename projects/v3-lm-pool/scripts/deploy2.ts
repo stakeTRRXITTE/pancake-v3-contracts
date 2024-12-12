@@ -26,9 +26,9 @@ async function main() {
 
   console.log('pancakeV3LmPoolDeployer deployed to:', pancakeV3LmPoolDeployer.address)
 
-  const pancakeV3Factory = new ethers.Contract(pancakeV3Factory_address, abi, owner)
+  const stakeTRRXITTEV3Factory = new ethers.Contract(pancakeV3Factory_address, abi, owner)
 
-  await pancakeV3Factory.setLmPoolDeployer(pancakeV3LmPoolDeployer.address)
+  await stakeTRRXITTEV3Factory.setLmPoolDeployer(pancakeV3LmPoolDeployer.address)
 
   const contracts = {
     PancakeV3LmPoolDeployer: pancakeV3LmPoolDeployer.address,

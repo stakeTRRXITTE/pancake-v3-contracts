@@ -17,19 +17,19 @@ async function main() {
   console.log('owner', owner.address)
 
   let pancakeV3PoolDeployer_address = ''
-  let pancakeV3PoolDeployer
+  let stakeTRRXITTEV3PoolDeployer
   const PancakeV3PoolDeployer = new ContractFactory(
     artifacts.PancakeV3PoolDeployer.abi,
     artifacts.PancakeV3PoolDeployer.bytecode,
     owner
   )
   if (!pancakeV3PoolDeployer_address) {
-    pancakeV3PoolDeployer = await PancakeV3PoolDeployer.deploy()
+    stakeTRRXITTEV3PoolDeployer = await PancakeV3PoolDeployer.deploy()
 
-    pancakeV3PoolDeployer_address = pancakeV3PoolDeployer.address
-    console.log('pancakeV3PoolDeployer', pancakeV3PoolDeployer_address)
+    pancakeV3PoolDeployer_address = stakeTRRXITTEV3PoolDeployer.address
+    console.log('stakeTRRXITTEV3PoolDeployer', pancakeV3PoolDeployer_address)
   } else {
-    pancakeV3PoolDeployer = new ethers.Contract(
+    stakeTRRXITTEV3PoolDeployer = new ethers.Contract(
       pancakeV3PoolDeployer_address,
       artifacts.PancakeV3PoolDeployer.abi,
       owner
@@ -37,23 +37,23 @@ async function main() {
   }
 
   let pancakeV3Factory_address = ''
-  let pancakeV3Factory
+  let stakeTRRXITTEV3Factory
   if (!pancakeV3Factory_address) {
     const PancakeV3Factory = new ContractFactory(
       artifacts.PancakeV3Factory.abi,
       artifacts.PancakeV3Factory.bytecode,
       owner
     )
-    pancakeV3Factory = await PancakeV3Factory.deploy(pancakeV3PoolDeployer_address)
+    stakeTRRXITTEV3Factory = await PancakeV3Factory.deploy(pancakeV3PoolDeployer_address)
 
-    pancakeV3Factory_address = pancakeV3Factory.address
-    console.log('pancakeV3Factory', pancakeV3Factory_address)
+    pancakeV3Factory_address = stakeTRRXITTEV3Factory.address
+    console.log('stakeTRRXITTEV3Factory', pancakeV3Factory_address)
   } else {
-    pancakeV3Factory = new ethers.Contract(pancakeV3Factory_address, artifacts.PancakeV3Factory.abi, owner)
+    stakeTRRXITTEV3Factory = new ethers.Contract(pancakeV3Factory_address, artifacts.PancakeV3Factory.abi, owner)
   }
 
-  // Set FactoryAddress for pancakeV3PoolDeployer.
-  await pancakeV3PoolDeployer.setFactoryAddress(pancakeV3Factory_address);
+  // Set FactoryAddress for stakeTRRXITTEV3PoolDeployer.
+  await stakeTRRXITTEV3PoolDeployer.setFactoryAddress(pancakeV3Factory_address);
 
 
   const contracts = {

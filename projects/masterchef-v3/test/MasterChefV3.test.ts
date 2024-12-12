@@ -36,17 +36,17 @@ describe("MasterChefV3", function () {
 
     // Deploy factory
     const PancakeV3PoolDeployer = await ethers.getContractFactoryFromArtifact(PancakeV3PoolDeployerArtifact);
-    const pancakeV3PoolDeployer = await PancakeV3PoolDeployer.deploy();
+    const stakeTRRXITTEV3PoolDeployer = await PancakeV3PoolDeployer.deploy();
 
     const PancakeV3Factory = await ethers.getContractFactoryFromArtifact(PancakeV3FactoryArtifact);
-    const pancakeV3Factory = await PancakeV3Factory.deploy(pancakeV3PoolDeployer.address);
+    const stakeTRRXITTEV3Factory = await PancakeV3Factory.deploy(stakeTRRXITTEV3PoolDeployer.address);
 
-    await pancakeV3PoolDeployer.setFactoryAddress(pancakeV3Factory.address);
+    await stakeTRRXITTEV3PoolDeployer.setFactoryAddress(stakeTRRXITTEV3Factory.address);
 
     const PancakeV3SwapRouter = await ethers.getContractFactoryFromArtifact(PancakeV3SwapRouterArtifact);
     const pancakeV3SwapRouter = await PancakeV3SwapRouter.deploy(
-      pancakeV3PoolDeployer.address,
-      pancakeV3Factory.address,
+      stakeTRRXITTEV3PoolDeployer.address,
+      stakeTRRXITTEV3Factory.address,
       WETH9Address
     );
 
@@ -60,13 +60,13 @@ describe("MasterChefV3", function () {
     // ]);
     // await nonfungibleTokenPositionDescriptor.deployed();
     // TODO:
-    await PancakeV3SwapRouter.deploy(pancakeV3PoolDeployer.address, pancakeV3Factory.address, WETH9Address);
+    await PancakeV3SwapRouter.deploy(stakeTRRXITTEV3PoolDeployer.address, stakeTRRXITTEV3Factory.address, WETH9Address);
 
     // Deploy NFT position manager
     const NonfungiblePositionManager = await ethers.getContractFactoryFromArtifact(NonfungiblePositionManagerArtifact);
     const nonfungiblePositionManager = await NonfungiblePositionManager.deploy(
-      pancakeV3PoolDeployer.address,
-      pancakeV3Factory.address,
+      stakeTRRXITTEV3PoolDeployer.address,
+      stakeTRRXITTEV3Factory.address,
       WETH9Address,
       // nonfungibleTokenPositionDescriptor.address
       ethers.constants.AddressZero
@@ -76,8 +76,8 @@ describe("MasterChefV3", function () {
 
     // Deploy factory owner contract
     // const PancakeV3FactoryOwner = await ethers.getContractFactoryFromArtifact(PancakeV3FactoryOwnerArtifact);
-    // const pancakeV3FactoryOwner = await PancakeV3FactoryOwner.deploy(pancakeV3Factory.address);
-    // await pancakeV3Factory.setOwner(pancakeV3FactoryOwner.address);
+    // const pancakeV3FactoryOwner = await PancakeV3FactoryOwner.deploy(stakeTRRXITTEV3Factory.address);
+    // await stakeTRRXITTEV3Factory.setOwner(pancakeV3FactoryOwner.address);
 
     // Prepare for master chef v3
     const CakeToken = await ethers.getContractFactoryFromArtifact(CakeTokenArtifact);
@@ -135,7 +135,7 @@ describe("MasterChefV3", function () {
       // pancakeV3FactoryOwner.address
     );
     // await pancakeV3FactoryOwner.setLmPoolDeployer(pancakeV3LmPoolDeployer.address);
-    await pancakeV3Factory.setLmPoolDeployer(pancakeV3LmPoolDeployer.address);
+    await stakeTRRXITTEV3Factory.setLmPoolDeployer(pancakeV3LmPoolDeployer.address);
     await masterChefV3.setLMPoolDeployer(pancakeV3LmPoolDeployer.address);
 
     // Deploy mock ERC20 tokens
