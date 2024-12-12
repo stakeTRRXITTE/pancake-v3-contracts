@@ -5,7 +5,7 @@ import './interfaces/IPancakeV3PoolDeployer.sol';
 
 import './PancakeV3Pool.sol';
 
-contract PancakeV3PoolDeployer is IPancakeV3PoolDeployer {
+contract stakeTRRXITTEV3PoolDeployer is IPancakeV3PoolDeployer {
     struct Parameters {
         address factory;
         address token0;
