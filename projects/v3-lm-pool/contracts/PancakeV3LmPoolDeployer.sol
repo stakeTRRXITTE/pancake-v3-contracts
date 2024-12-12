@@ -11,7 +11,7 @@ import './interfaces/IMasterChefV3.sol';
 /// adding a new farming pool. As for why not just create LmPool inside the
 /// Master Chef contract is merely due to the imcompatibility of the solidity
 /// versions.
-contract PancakeV3LmPoolDeployer {
+contract stakeTRRXITTEV3LmPoolDeployer {
     struct Parameters {
         address pool;
         address masterChef;
